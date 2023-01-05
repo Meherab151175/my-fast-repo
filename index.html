@@ -7,6 +7,53 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <!-- Copy Section Start -->
+    <input type="text" name="" id="CopyText" value="Copy the value">
+    <button id="CopyBTN">Copy</button>
+    <!-- Copy Section End -->
+    <br><br>
+    <!-- Cut Section Start -->
+    <input type="text" name="" id="CutText" value="Cut the value">
+    <button id="CutBTN">Cut</button>
+    <!-- Cut Section End -->
+    <br><br>
+    <!-- Paste Section Start -->
+    <input type="text" name="" id="PasteText">
+    <button id="PasteBTN">Paste</button>
+    <!-- Paste Section End -->
+
+    <script>
+        //Copy Section Start
+        var CopyText = document.getElementById('CopyText');
+        var CopyBTN = document.getElementById('CopyBTN');
+
+        CopyBTN.addEventListener('click',function(){
+            navigator.clipboard.writeText(CopyText.value)
+        })
+        //Copy Section End
+
+        //Cut Section Start
+        var CutText = document.getElementById('CutText');
+        var CutBTN = document.getElementById('CutBTN');
+
+        CutBTN.addEventListener('click',function(){
+            navigator.clipboard.writeText(CutText.value);
+            CutText.value = "";
+        })
+        //Cut Section End
+
+        //Paste Section Start
+        var PasteText = document.getElementById('PasteText');
+        var PasteBTN = document.getElementById('PasteBTN');
+
+        PasteBTN.addEventListener('click',function(){
+            PasteText.value = "";
+            navigator.clipboard.readText()
+           .then(function(text){
+            PasteText.value = text;
+           }) 
+        })
+        //Paste Section End
+    </script>
 </body>
 </html>
